@@ -64,7 +64,12 @@ const Dashboard = () => {
       },
     },
   };
-  //border-2 border-rose-600
+  
+  const toggleDropdown = () => {
+    const dropdown = document.getElementById('dropdown');
+    dropdown.classList.toggle('hidden');
+}
+
   return (
     <div className="flex h-screen bg-gray-100"> 
   {/* Sidebar */} 
@@ -91,13 +96,6 @@ const Dashboard = () => {
       
   </div>
 
-  {/* Mobile Sidebar Toggle Button */}
-  {/* <div className="md:hidden pt-1 pl-1">
-    <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-gray-700">
-      {sidebarOpen ? 'Close Menu' : <FiAlignJustify className='text-3xl' />}
-    </button>
-  </div> */}
-
   {/* Collapsible Sidebar for Mobile */}
   <div className={`fixed inset-0 bg-white shadow-md transition-transform transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:hidden`}>
     <div className="p-4 border-b"> 
@@ -106,6 +104,7 @@ const Dashboard = () => {
     <IoMdClose onClick={() => setSidebarOpen(!sidebarOpen)} />
     </div>
       <h2 className="text-lg font-bold">Sales Dashboard</h2> 
+      
     </div> 
     <ul className="mt-4"> 
    
@@ -140,11 +139,18 @@ const Dashboard = () => {
         <img
           alt=""
           src="https://media.istockphoto.com/id/2151669184/vector/vector-flat-illustration-in-grayscale-avatar-user-profile-person-icon-gender-neutral.jpg?s=612x612&w=0&k=20&c=UEa7oHoOL30ynvmJzSCIPrwwopJdfqzBs0q69ezQoM8="
-          className="inline-block h-10 w-10 rounded-full"
+          className="inline-block h-10 w-10 rounded-full cursor-pointer"
+          onClick={toggleDropdown}
         />
       </div>
     </div>
 
+    <div id="dropdown" className="hidden absolute right-1 mt-12 w-24 bg-white border border-gray-300 rounded-full shadow-lg">
+    <li className="flex items-center p-2 hover:bg-yellow-700 hover:text-white rounded-full cursor-pointer"> 
+        <BiLogOut className="mr-2"/> <Link to="/">Logout</Link> 
+      </li> 
+        
+    </div>
     
 
     {/* Cards Section */}
